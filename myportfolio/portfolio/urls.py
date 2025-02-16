@@ -1,3 +1,5 @@
+from django.conf import settings
+from django.conf.urls.static import static
 
 from django.urls import path
 from . import views
@@ -7,5 +9,8 @@ urlpatterns = [
    path('about/',views.about,name='about'),
    path('resume/',views.resume,name='resume'),
    path('contact/',views.contact,name='contact'),
+   path('skills/',views.skills,name='skills'),
 
 ]
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
